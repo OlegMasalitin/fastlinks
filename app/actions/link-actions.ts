@@ -1,27 +1,53 @@
-import { MongoClient, ServerApiVersion } from 'mongodb';
-
 import { LinkItem } from './link';
-import { resolve } from 'path';
+import { ObjectId } from 'mongodb';
+import { client } from './mongodb';
 
-const uri =
-  'mongodb+srv://massaoleg_db_user:6FwlJiDikU3Df3Fo@cluster0.wrw6e8k.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
-
-export async function loadLinks(): Promise<LinkItem[]> {
+export async function loadLinks(
+  isNew: boolean | null,
+  visible: boolean | null,
+  archived: boolean | null,
+  tags: string[] = [],
+  search: string | null = null
+): Promise<LinkItem[]> {
   try {
+    const filter = {} as { isNew: boolean; visible: boolean; archived: boolean };
+    if (isNew !== null) {
+      filter.isNew = isNew;
+    }
+    if (visible !== null) {
+      filter.visible = visible;
+    }
+    if (archived !== null) {
+      filter.archived = archived;
+    }
+
     await client.connect();
     const db = await client.db('fastlinks');
     const linksCollection = db.collection('links');
-    const links = await linksCollection.find().toArray();
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    return links.map((link) => {
+    const links = await linksCollection.find(filter).toArray();
+
+    console.log('XXXXXXXXXXXXXXXXXXXX tags = ', tags);
+    console.log('XXXXXXXXXXXXXXXXXXXX search = ', search);
+
+    const searchLowerCase = search?.toLowerCase();
+    const filteredLinksBySearch = !search
+      ? links
+      : links.filter((link) => {
+          return (
+            link.name.toLowerCase().indexOf(searchLowerCase) > -1
+            // || link.url.toLowerCase().indexOf(searchLowerCase) > -1
+          );
+        });
+    const filteredLinks =
+      tags.length === 0
+        ? filteredLinksBySearch
+        : filteredLinksBySearch.filter((link) => {
+            return tags.some((tag) => link.tags.some((t: string) => t.toLowerCase() === tag.toLowerCase()));
+          });
+
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    // throw new Error('There is an error on links loading.');
+    return filteredLinks.map((link) => {
       return {
         id: link._id.toString(),
         name: link.name,
@@ -33,6 +59,32 @@ export async function loadLinks(): Promise<LinkItem[]> {
         archived: link.archived,
       };
     });
+  } finally {
+    await client.close();
+  }
+}
+
+export async function loadLink(id: string): Promise<LinkItem | null> {
+  try {
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
+
+    await client.connect();
+    const db = await client.db('fastlinks');
+    const linksCollection = db.collection('links');
+    const link = await linksCollection.findOne({ _id: new ObjectId(id) });
+
+    return link == null
+      ? null
+      : {
+          id: link._id.toString(),
+          name: link.name,
+          url: link.url,
+          tags: link.tags,
+          visible: link.visible,
+          isNew: link.isNew,
+          state: link.state,
+          archived: link.archived,
+        };
   } finally {
     await client.close();
   }

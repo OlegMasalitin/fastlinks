@@ -1,5 +1,5 @@
 export interface LinkItem {
-  id: string;
+  id: string | null;
   name: string;
   url: string;
   tags: string[];

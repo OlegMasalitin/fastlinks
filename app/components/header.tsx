@@ -9,6 +9,8 @@ export default function Header() {
         <Logo />
       </Link>
       <div>
+        <NavLink href="/links/add">Add Link</NavLink>
+        <span className="inline-block mx-2">|</span>
         <NavLink href="/links">Links</NavLink>
         <span className="inline-block mx-2">|</span>
         <NavLink href="/notes">Notes</NavLink>

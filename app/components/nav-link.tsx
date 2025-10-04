@@ -12,7 +12,7 @@ export default function NavLink({
 }>) {
   const path = usePathname();
   return (
-    <Link href={href} className={path.startsWith(href) ? 'text-sky-600 underline' : ''}>
+    <Link href={href} className={path === href ? 'text-sky-600 underline' : ''}>
       {children}
     </Link>
   );
