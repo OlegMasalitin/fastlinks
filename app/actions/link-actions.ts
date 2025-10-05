@@ -36,7 +36,7 @@ export async function loadLinks(
       tags.length === 0
         ? filteredLinksBySearch
         : filteredLinksBySearch.filter((link) => {
-            return tags.some((tag) => link.tags.some((t: string) => t.toLowerCase() === tag.toLowerCase()));
+            return tags.some((tag) => (link.tags || []).some((t: string) => t.toLowerCase() === tag.toLowerCase()));
           });
 
     return filteredLinks.map((link) => {

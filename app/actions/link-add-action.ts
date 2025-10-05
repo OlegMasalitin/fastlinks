@@ -6,7 +6,6 @@ import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { client } from './mongodb';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
-import { time } from 'console';
 
 export async function addLinkAction(prevState: AddLinkState, formData: FormData) {
   const session = await getServerSession(authOptions);

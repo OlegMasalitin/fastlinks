@@ -22,10 +22,10 @@ export default function LinkContent({ link }: Readonly<{ link: LinkItem }>) {
   };
   return (
     <>
-      <a href={link.url} target="_blank" className="break-all" style={{ width: 'calc(100% - 160px)' }}>
+      <a href={link.url} target="_blank" className="break-all">
         {link.name}
       </a>
-      <div className="flex flex-row flex-nowrap items-center" style={{ width: '160px' }}>
+      <div className="flex flex-row flex-nowrap items-center">
         <Link className="orbitron ml-2 text-sky-700" href={`/links/${link.id}/view`}>
           View
         </Link>
