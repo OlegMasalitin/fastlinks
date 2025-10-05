@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 
 import Header from './components/header';
 import type { Metadata } from 'next';
+import { Providers } from './providers';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -27,9 +28,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" style={{ height: '100%' }} suppressHydrationWarning>
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Rye&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Nixie+One&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap" rel="stylesheet" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+          rel="stylesheet"
+        ></link>
+      </head>
       <body style={{ height: '100%' }} className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );

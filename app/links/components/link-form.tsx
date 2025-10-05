@@ -41,7 +41,7 @@ export default function AddLinkForm({ link, isEdit }: Readonly<{ link: LinkItem;
   }
 
   return (
-    <div className="max-w-md mx-auto mt-10">
+    <div className="max-w-md mx-auto mt-1">
       <h1 className="text-xl font-bold mb-4">{isEdit ? 'Edit link' : 'Add link'}</h1>
 
       <form action={action} onSubmit={handleClientValidation} className="space-y-4">

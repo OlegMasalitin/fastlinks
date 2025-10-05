@@ -22,21 +22,15 @@ export async function loadLinks(
     }
 
     await client.connect();
-    const db = await client.db('fastlinks');
+    const db = client.db('fastlinks');
     const linksCollection = db.collection('links');
     const links = await linksCollection.find(filter).toArray();
-
-    console.log('XXXXXXXXXXXXXXXXXXXX tags = ', tags);
-    console.log('XXXXXXXXXXXXXXXXXXXX search = ', search);
 
     const searchLowerCase = search?.toLowerCase();
     const filteredLinksBySearch = !search
       ? links
       : links.filter((link) => {
-          return (
-            link.name.toLowerCase().indexOf(searchLowerCase) > -1
-            // || link.url.toLowerCase().indexOf(searchLowerCase) > -1
-          );
+          return link.name.toLowerCase().indexOf(searchLowerCase) > -1;
         });
     const filteredLinks =
       tags.length === 0
@@ -45,8 +39,6 @@ export async function loadLinks(
             return tags.some((tag) => link.tags.some((t: string) => t.toLowerCase() === tag.toLowerCase()));
           });
 
-    // await new Promise((resolve) => setTimeout(resolve, 1000));
-    // throw new Error('There is an error on links loading.');
     return filteredLinks.map((link) => {
       return {
         id: link._id.toString(),
@@ -57,6 +49,7 @@ export async function loadLinks(
         isNew: link.isNew,
         state: link.state,
         archived: link.archived,
+        timestamp: link.timestamp,
       };
     });
   } finally {
@@ -66,10 +59,8 @@ export async function loadLinks(
 
 export async function loadLink(id: string): Promise<LinkItem | null> {
   try {
-    // await new Promise((resolve) => setTimeout(resolve, 5000));
-
     await client.connect();
-    const db = await client.db('fastlinks');
+    const db = client.db('fastlinks');
     const linksCollection = db.collection('links');
     const link = await linksCollection.findOne({ _id: new ObjectId(id) });
 
@@ -84,6 +75,7 @@ export async function loadLink(id: string): Promise<LinkItem | null> {
           isNew: link.isNew,
           state: link.state,
           archived: link.archived,
+          timestamp: link.timestamp,
         };
   } finally {
     await client.close();

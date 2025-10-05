@@ -7,4 +7,5 @@ export interface LinkItem {
   isNew: boolean;
   state: number;
   archived: boolean;
+  timestamp: string;
 }

@@ -56,7 +56,7 @@ export default function LinksNavigationPanelSearch({
         <PopoverTrigger>
           <div
             onClick={() => setOpen(true)}
-            className="whitespace-nowrap text-ellipsis overflow-hidden max-w-48 bg-blue-500 text-white px-4 py-2 rounded"
+            className="whitespace-nowrap text-ellipsis overflow-hidden max-w-48 bg-blue-500 text-white px-4 py-1 rounded"
           >
             {filterNameValue || filterTagsValue ? filterNameValue + ' ' + filterTagsValue : 'Search'}
           </div>

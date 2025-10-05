@@ -1,10 +1,18 @@
 import { NextResponse } from 'next/server';
 import { ObjectId } from 'mongodb';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { client } from '@/app/actions/mongodb';
+import { getServerSession } from 'next-auth/next';
 
 export async function DELETE(req: Request, { params }: { params: { id: string } }) {
   try {
-    const db = await client.db('fastlinks');
+    const session = await getServerSession(authOptions);
+
+    if (!session) {
+      return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    }
+
+    const db = client.db('fastlinks');
     const linksCollection = db.collection('links');
     const result = await linksCollection.deleteOne({
       _id: new ObjectId(params.id),

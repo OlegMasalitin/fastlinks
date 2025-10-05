@@ -1,4 +1,5 @@
 import AddLinkForm from '../components/link-form';
+import BackButton from '../components/back-button';
 import { LinkItem } from '@/app/actions/link';
 import { notFound } from 'next/navigation';
 
@@ -20,6 +21,9 @@ export default async function EditLink() {
 
   return (
     <div className="">
+      <div className="flex flex-row justify-end">
+        <BackButton />
+      </div>
       <AddLinkForm link={link} isEdit={false} />
     </div>
   );

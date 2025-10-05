@@ -12,7 +12,7 @@ export default function LinksLayout({
 }>) {
   return (
     <div className="p-[8px] w-full h-[calc(100%_-_64px)]">
-      <div className="border border-gray-500 p-[8px] w-full h-full">{children}</div>
+      <div className="w-full h-full">{children}</div>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 @import 'tailwindcss';
-@import "tw-animate-css";
+@import 'tw-animate-css';
 /*---break---*/
 @custom-variant dark (&:is(.dark *));
 
@@ -56,6 +56,31 @@ body {
   padding: 0;
   width: 100% !important;
   height: 100% !important;
+}
+
+.cookie-regular {
+  font-family: 'Rye', serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.nixie-one-regular {
+  font-family: 'Nixie One', system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.poiret-one-regular {
+  font-family: 'Poiret One', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.orbitron {
+  font-family: 'Orbitron', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 /*---break---*/

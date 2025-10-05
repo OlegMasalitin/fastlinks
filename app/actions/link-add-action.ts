@@ -2,10 +2,19 @@
 
 import { AddLinkState } from './add-link-state';
 import { ObjectId } from 'mongodb';
+import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { client } from './mongodb';
+import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
+import { time } from 'console';
 
 export async function addLinkAction(prevState: AddLinkState, formData: FormData) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    redirect('/auth');
+  }
+
   const linkId = formData.get('linkId') as string;
   const name = formData.get('name') as string;
   const url = formData.get('url') as string;
@@ -32,23 +41,27 @@ export async function addLinkAction(prevState: AddLinkState, formData: FormData)
     isNew,
     archived,
     state,
+    timestamp: new Date().toISOString(),
   };
 
-  await client.connect();
-  const db = await client.db('fastlinks');
-  const linksCollection = db.collection('links');
+  try {
+    await client.connect();
+    const db = client.db('fastlinks');
+    const linksCollection = db.collection('links');
 
-  if (link.id == null) {
-    linksCollection.insertOne(link);
-  } else {
-    const result = await linksCollection.updateOne({ _id: new ObjectId(link.id) }, { $set: link });
+    if (link.id == null) {
+      linksCollection.insertOne(link);
+    } else {
+      const result = await linksCollection.updateOne({ _id: new ObjectId(link.id) }, { $set: link });
 
-    //if (result.matchedCount === 0) {
-    //  return res.status(404).json({ message: 'Document not found' });
-    //}
+      if (result.matchedCount === 0) {
+        return { success: false, error: 'Link not found' };
+      }
+    }
+  } catch (e) {
+    return { success: false, error: e instanceof Error ? e.message : 'Something wrong!' };
   }
 
-  console.log(link);
   redirect('/links');
 
   return { success: true, message: 'Link added successful!' };

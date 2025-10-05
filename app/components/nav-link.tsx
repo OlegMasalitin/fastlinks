@@ -12,7 +12,10 @@ export default function NavLink({
 }>) {
   const path = usePathname();
   return (
-    <Link href={href} className={path === href ? 'text-sky-600 underline' : ''}>
+    <Link
+      href={href}
+      className={path === href ? 'text-amber-800 nixie-one-regular text-xl' : 'nixie-one-regular text-xl'}
+    >
       {children}
     </Link>
   );
