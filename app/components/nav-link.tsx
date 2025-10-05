@@ -14,7 +14,7 @@ export default function NavLink({
   return (
     <Link
       href={href}
-      className={path === href ? 'text-amber-800 nixie-one-regular text-xl' : 'nixie-one-regular text-xl'}
+      className={path === href ? 'text-amber-800 nixie-one-regular text-lg' : 'nixie-one-regular text-xl'}
     >
       {children}
     </Link>

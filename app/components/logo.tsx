@@ -3,16 +3,15 @@
 import { useEffect, useState } from 'react';
 
 import Image from 'next/image';
-import logo1 from '@/assets/logo1.png';
 import logo2 from '@/assets/logo2.png';
-import logo3 from '@/assets/logo3.png';
-import logo4 from '@/assets/logo4.png';
+import logo3 from '@/assets/logo2-2.png';
+import logo4 from '@/assets/logo2-3.png';
 
 const images = [
   //{ img: logo1, width: 48, height: 48 },
   { img: logo2, width: 169, height: 48 },
-  { img: logo3, width: 124, height: 48 },
-  { img: logo4, width: 210, height: 48 },
+  { img: logo3, width: 169, height: 48 },
+  { img: logo4, width: 169, height: 48 },
 ];
 
 export default function Logo() {
@@ -27,7 +26,7 @@ export default function Logo() {
         }
         return next;
       });
-    }, 5000);
+    }, 500);
 
     return () => clearInterval(interval);
   });
