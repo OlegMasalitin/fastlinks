@@ -1,11 +1,13 @@
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
+
 import { ObjectId } from 'mongodb';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { client } from '@/app/actions/mongodb';
 import { getServerSession } from 'next-auth/next';
 
-export async function DELETE(req: Request, { params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest, context: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await context.params;
     const session = await getServerSession(authOptions);
 
     if (!session) {
@@ -15,7 +17,7 @@ export async function DELETE(req: Request, { params }: { params: { id: string } 
     const db = client.db('fastlinks');
     const linksCollection = db.collection('links');
     const result = await linksCollection.deleteOne({
-      _id: new ObjectId(params.id),
+      _id: new ObjectId(id),
     });
 
     if (result.deletedCount === 1) {
