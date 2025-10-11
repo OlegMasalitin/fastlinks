@@ -7,11 +7,6 @@ import { getServerSession } from 'next-auth/next';
 
 export default async function Header() {
   const session = await getServerSession(authOptions);
-  if (session) {
-    console.log('Session exist...');
-  } else {
-    console.log('Session NOT exist...');
-  }
 
   return (
     <header className="h-[64px] p-[8px] flex flex-row justify-between items-center border-b border-gray-500">

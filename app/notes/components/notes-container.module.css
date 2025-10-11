@@ -1,0 +1,17 @@
+.threecolumns {
+  column-count: 3;
+  column-gap: 2rem;
+  list-style-position: inside;
+}
+
+@media screen and (max-width: 1440px) {
+  .threecolumns {
+    column-count: 2;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .threecolumns {
+    column-count: 1;
+  }
+}

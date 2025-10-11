@@ -74,6 +74,8 @@ export async function loadLink(id: string): Promise<LinkItem | null> {
           archived: link.archived,
           timestamp: link.timestamp,
         };
+  } catch (_) {
+    return null;
   } finally {
     await client.close();
   }

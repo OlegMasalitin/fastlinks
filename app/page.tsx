@@ -29,7 +29,7 @@ export default function Home() {
             Archived Links
           </div>
         </Link>
-        <Link className="" href={`/notes/add`}>
+        <Link className="" href={`/notes/manage/add`}>
           <div className="orbitron w-44 p-5 mb-5 mr-5 rounded-sm  border border-gray-500 flex flex-row flex-nowrap items-center justify-center text-sky-700">
             Add Note
           </div>

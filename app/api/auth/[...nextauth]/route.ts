@@ -3,7 +3,7 @@ import NextAuth, { User } from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import { JWT } from 'next-auth/jwt';
 import { client } from '@/app/actions/mongodb';
-import { verifyPassword } from '@/app/lib/auth';
+import { verifyPassword } from '@/lib/auth';
 
 export const authOptions = {
   providers: [

@@ -1,9 +1,9 @@
 import AddLinkForm from '../components/link-form';
-import BackButton from '../components/back-button';
+import BackButton from '../../components/back-button';
 import { LinkItem } from '@/app/actions/link';
 import { notFound } from 'next/navigation';
 
-export default async function EditLink() {
+export default async function AddLink() {
   const link = {
     id: null,
     name: '',

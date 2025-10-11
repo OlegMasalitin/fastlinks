@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { client } from '@/app/actions/mongodb';
-import { hashPassword } from '@/app/lib/auth';
+import { hashPassword } from '@/lib/auth';
 
 type RequestBody = {
   email: string;

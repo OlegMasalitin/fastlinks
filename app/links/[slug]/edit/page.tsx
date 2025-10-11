@@ -1,5 +1,5 @@
 import AddLinkForm from '../../components/link-form';
-import BackButton from '../../components/back-button';
+import BackButton from '../../../components/back-button';
 import { loadLink } from '@/app/actions/link-actions';
 import { notFound } from 'next/navigation';
 
