@@ -76,6 +76,8 @@ export default function LinksNavigationPanelSearch({
             <option value="Javascript">Javascript</option>
             <option value="Typescript">Typescript</option>
             <option value="Programming">Programming</option>
+            <option value="Css">Css</option>
+            <option value="Scss">Scss</option>
             <option value="RxJs">RxJs</option>
             <option value="Music">Music</option>
             <option value="Film">Film</option>

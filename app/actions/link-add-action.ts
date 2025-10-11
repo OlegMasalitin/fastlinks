@@ -3,7 +3,7 @@
 import { AddLinkState } from './add-link-state';
 import { ObjectId } from 'mongodb';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
-import { client } from './mongodb';
+import { getLinksCollection } from './mongodb';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 
@@ -44,9 +44,7 @@ export async function addLinkAction(prevState: AddLinkState, formData: FormData)
   };
 
   try {
-    await client.connect();
-    const db = client.db('fastlinks');
-    const linksCollection = db.collection('links');
+    const linksCollection = await getLinksCollection();
 
     if (link.id == null) {
       linksCollection.insertOne(link);

@@ -10,3 +10,9 @@ export const client = new MongoClient(uri, {
     deprecationErrors: true,
   },
 });
+
+export async function getLinksCollection() {
+  await client.connect();
+  const db = client.db('fastlinks');
+  return db.collection('links');
+}

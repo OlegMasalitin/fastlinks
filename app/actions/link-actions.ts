@@ -1,6 +1,7 @@
+import { client, getLinksCollection } from './mongodb';
+
 import { LinkItem } from './link';
 import { ObjectId } from 'mongodb';
-import { client } from './mongodb';
 
 export async function loadLinks(
   isNew: boolean | null,
@@ -21,9 +22,7 @@ export async function loadLinks(
       filter.archived = archived;
     }
 
-    await client.connect();
-    const db = client.db('fastlinks');
-    const linksCollection = db.collection('links');
+    const linksCollection = await getLinksCollection();
     const links = await linksCollection.find(filter).toArray();
 
     const searchLowerCase = search?.toLowerCase();
@@ -59,9 +58,7 @@ export async function loadLinks(
 
 export async function loadLink(id: string): Promise<LinkItem | null> {
   try {
-    await client.connect();
-    const db = client.db('fastlinks');
-    const linksCollection = db.collection('links');
+    const linksCollection = await getLinksCollection();
     const link = await linksCollection.findOne({ _id: new ObjectId(id) });
 
     return link == null
