@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-import { ConfidentialNote } from '@/app/actions/Note';
+import { ConfidentialNote } from '@/app/actions/note';
 import ConfidentialNoteContent from './confidential-note-content';
 import Link from 'next/link';
 import classes from './notes-container.module.css';
@@ -27,7 +27,7 @@ export default function ConfidentialNotesContainer({ notes }: Readonly<{ notes: 
             <AlertDescription>
               <div className="whitespace-nowrap">
                 Please add new
-                <Link href="/notes/manage/add" className="ml-1 nixie-one-regular">
+                <Link href="/notes/manage/confidential/add" className="ml-1 nixie-one-regular">
                   note
                 </Link>
               </div>

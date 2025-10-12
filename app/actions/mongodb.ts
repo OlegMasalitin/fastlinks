@@ -16,3 +16,15 @@ export async function getLinksCollection() {
   const db = client.db('fastlinks');
   return db.collection('links');
 }
+
+export async function getCommonNotesCollection() {
+  await client.connect();
+  const db = client.db('fastlinks');
+  return db.collection('commonnotes');
+}
+
+export async function getConfidentialNotesCollection() {
+  await client.connect();
+  const db = client.db('fastlinks');
+  return db.collection('confidentialnotes');
+}

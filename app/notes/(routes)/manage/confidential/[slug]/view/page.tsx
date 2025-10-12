@@ -1,14 +1,14 @@
 import BackButton from '@/app/components/back-button';
-import { loadCommonNote } from '@/app/actions/note-actions';
+import { loadConfidentialNote } from '@/app/actions/note-actions';
 import { notFound } from 'next/navigation';
 
 interface ViewCommonNoteProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function ViewLink({ params }: Readonly<ViewCommonNoteProps>) {
+export default async function ViewConfidentialNote({ params }: Readonly<ViewCommonNoteProps>) {
   const { slug } = await params;
-  const note = await loadCommonNote(slug);
+  const note = await loadConfidentialNote(slug);
 
   if (note == null) {
     notFound();
@@ -22,8 +22,10 @@ export default async function ViewLink({ params }: Readonly<ViewCommonNoteProps>
         <BackButton />
       </div>
       <div className="max-w-md mx-auto mt-10">
-        <div className="font-bold">Text: </div>
-        <div className="mb-3 ml-5 text-sky-500">{note.text}</div>
+        <div className="font-bold">Login: </div>
+        <div className="mb-3 ml-5 text-sky-500">{note.login}</div>
+        <div className="font-bold">Password: </div>
+        <div className="mb-3 ml-5 text-sky-500">{note.password}</div>
         <div className="font-bold">Description: </div>
         <div className="mb-3 ml-5 text-sky-500">{note.description}</div>
         <div className="font-bold">Year: </div>

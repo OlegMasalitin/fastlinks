@@ -1,16 +1,17 @@
+import AddCommonNoteForm from '@/app/notes/components/common-note-form';
 import BackButton from '@/app/components/back-button';
-import { CommonNote } from '@/app/actions/Note';
+import { CommonNote } from '@/app/actions/note';
 import { notFound } from 'next/navigation';
 
-export default async function AddNote() {
-  const link = {
+export default async function AddCommonNote() {
+  const note = {
     id: null,
     text: '',
     description: '',
     year: new Date().getFullYear(),
   } as CommonNote;
 
-  if (link == null) {
+  if (note == null) {
     notFound();
   }
 
@@ -19,6 +20,7 @@ export default async function AddNote() {
       <div className="flex flex-row justify-end">
         <BackButton />
       </div>
+      <AddCommonNoteForm note={note} isEdit={false} />
     </div>
   );
 }

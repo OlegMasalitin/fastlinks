@@ -1,13 +1,13 @@
 'use server';
 
-import { AddLinkState } from './add-link-state';
+import { ManageState } from './manage-state';
 import { ObjectId } from 'mongodb';
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import { getLinksCollection } from './mongodb';
 import { getServerSession } from 'next-auth/next';
 import { redirect } from 'next/navigation';
 
-export async function addLinkAction(prevState: AddLinkState, formData: FormData) {
+export async function addLinkAction(prevState: ManageState, formData: FormData) {
   const session = await getServerSession(authOptions);
 
   if (!session) {

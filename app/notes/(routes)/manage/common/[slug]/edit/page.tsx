@@ -1,3 +1,4 @@
+import AddCommonNoteForm from '@/app/notes/components/common-note-form';
 import BackButton from '@/app/components/back-button';
 import { loadCommonNote } from '@/app/actions/note-actions';
 import { notFound } from 'next/navigation';
@@ -6,11 +7,11 @@ interface EditNoteProps {
   params: Promise<{ slug: string }>;
 }
 
-export default async function EditNote({ params }: Readonly<EditNoteProps>) {
+export default async function EditCommonNote({ params }: Readonly<EditNoteProps>) {
   const { slug } = await params;
-  const link = await loadCommonNote(slug);
+  const note = await loadCommonNote(slug);
 
-  if (link == null) {
+  if (note == null) {
     notFound();
   }
 
@@ -19,6 +20,7 @@ export default async function EditNote({ params }: Readonly<EditNoteProps>) {
       <div className="flex flex-row justify-end">
         <BackButton />
       </div>
+      <AddCommonNoteForm note={note} isEdit={true} />
     </div>
   );
 }

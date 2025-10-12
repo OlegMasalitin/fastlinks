@@ -1,13 +1,13 @@
-import CommonNotesContainer from '@/app/notes/components/common-notes-container';
+import ConfidentialNotesContainer from '@/app/notes/components/confidential-notes-container';
 import Link from 'next/link';
-import { getYearCommonNotes } from '@/app/actions/note-actions';
+import { loadYearConfidentialNotes } from '@/app/actions/note-actions';
 import { notFound } from 'next/navigation';
 
-interface CommonNoteProps {
+interface ConfidentialNoteProps {
   params: Promise<{ year: string }>;
 }
 
-export default async function CommonYearNotes({ params }: Readonly<CommonNoteProps>) {
+export default async function ConfidentialYearNotes({ params }: Readonly<ConfidentialNoteProps>) {
   const { year } = await params;
   const numYear = parseInt(year);
 
@@ -15,8 +15,7 @@ export default async function CommonYearNotes({ params }: Readonly<CommonNotePro
     notFound();
   }
 
-  const notes = await getYearCommonNotes(numYear);
-
+  const notes = await loadYearConfidentialNotes(numYear);
   return (
     <div className="w-full relative">
       <div className="flex flex-row justify-between absolute top-[-38px] left-[200px] right-0">
@@ -26,7 +25,7 @@ export default async function CommonYearNotes({ params }: Readonly<CommonNotePro
         </Link>
       </div>
       <div className="pt-3">
-        <CommonNotesContainer notes={notes} />
+        <ConfidentialNotesContainer notes={notes} />
       </div>
     </div>
   );

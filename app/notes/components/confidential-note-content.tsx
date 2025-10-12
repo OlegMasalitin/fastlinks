@@ -2,7 +2,7 @@
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
-import { ConfidentialNote } from '@/app/actions/Note';
+import { ConfidentialNote } from '@/app/actions/note';
 import Link from 'next/link';
 import { startTransition } from 'react';
 import { useRouter } from 'next/navigation';
@@ -13,7 +13,7 @@ export default function ConfidentialNoteContent({ note }: Readonly<{ note: Confi
   const { data: session } = useSession();
 
   const handleDelete = async (id: string | null) => {
-    const res = await fetch(`/api/notes/${id}`, { method: 'DELETE' });
+    const res = await fetch(`/api/notes/manage/confidential/${id}`, { method: 'DELETE' });
     if (res.ok) {
       startTransition(() => {
         router.refresh();
@@ -30,12 +30,12 @@ export default function ConfidentialNoteContent({ note }: Readonly<{ note: Confi
       </div>
 
       <div className="flex flex-row flex-nowrap items-center">
-        <Link className="orbitron ml-2 text-sky-700" href={`/notes/${note.id}/view`}>
+        <Link className="orbitron ml-2 text-sky-700" href={`/notes/manage/confidential/${note.id}/view`}>
           View
         </Link>
 
         {session && (
-          <Link className="orbitron ml-2 text-sky-700" href={`/notes/${note.id}/edit`}>
+          <Link className="orbitron ml-2 text-sky-700" href={`/notes/manage/confidential/${note.id}/edit`}>
             Edit
           </Link>
         )}

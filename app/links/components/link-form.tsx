@@ -2,12 +2,12 @@
 
 import { useActionState, useState } from 'react';
 
-import { AddLinkState } from '@/app/actions/add-link-state';
 import { LinkItem } from '@/app/actions/link';
+import { ManageState } from '@/app/actions/manage-state';
 import { addLinkAction } from '@/app/actions/link-add-action';
 
 export default function AddLinkForm({ link, isEdit }: Readonly<{ link: LinkItem; isEdit: boolean }>) {
-  const [state, action, isPending] = useActionState<AddLinkState, FormData>(addLinkAction, {
+  const [state, action, isPending] = useActionState<ManageState, FormData>(addLinkAction, {
     success: false,
     error: null,
     message: null,

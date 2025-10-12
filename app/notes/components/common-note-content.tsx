@@ -2,7 +2,7 @@
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
-import { CommonNote } from '@/app/actions/Note';
+import { CommonNote } from '@/app/actions/note';
 import Link from 'next/link';
 import { startTransition } from 'react';
 import { useRouter } from 'next/navigation';
@@ -13,7 +13,7 @@ export default function CommonNoteContent({ note }: Readonly<{ note: CommonNote 
   const { data: session } = useSession();
 
   const handleDelete = async (id: string | null) => {
-    const res = await fetch(`/api/notes/manage/${id}`, { method: 'DELETE' });
+    const res = await fetch(`/api/notes/common/${id}`, { method: 'DELETE' });
     if (res.ok) {
       startTransition(() => {
         router.refresh();
@@ -28,12 +28,12 @@ export default function CommonNoteContent({ note }: Readonly<{ note: CommonNote 
       </div>
 
       <div className="flex flex-row flex-nowrap items-center">
-        <Link className="orbitron ml-2 text-sky-700" href={`/notes/manage/${note.id}/view`}>
+        <Link className="orbitron ml-2 text-sky-700" href={`/notes/manage/common/${note.id}/view`}>
           View
         </Link>
 
         {session && (
-          <Link className="orbitron ml-2 text-sky-700" href={`/notes/manage/${note.id}/edit`}>
+          <Link className="orbitron ml-2 text-sky-700" href={`/notes/manage/common/${note.id}/edit`}>
             Edit
           </Link>
         )}
