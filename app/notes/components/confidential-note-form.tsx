@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useState } from 'react';
 
-import { ConfidentialNote } from '@/app/actions/note';
+import { ConfidentialNote } from '@/app/actions/allnote';
 import { ManageState } from '@/app/actions/manage-state';
 import { addConfidentialNoteAction } from '@/app/actions/note-add-action';
 import { useRouter } from 'next/navigation';

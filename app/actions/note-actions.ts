@@ -1,4 +1,4 @@
-import { CommonNote, ConfidentialNote } from './note';
+import { CommonNote, ConfidentialNote } from './allnote';
 import { getCommonNotesCollection, getConfidentialNotesCollection } from './mongodb';
 
 import { ObjectId } from 'mongodb';

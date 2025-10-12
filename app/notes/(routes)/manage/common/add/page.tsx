@@ -1,6 +1,6 @@
 import AddCommonNoteForm from '@/app/notes/components/common-note-form';
 import BackButton from '@/app/components/back-button';
-import { CommonNote } from '@/app/actions/note';
+import { CommonNote } from '@/app/actions/allnote';
 import { notFound } from 'next/navigation';
 
 export default async function AddCommonNote() {

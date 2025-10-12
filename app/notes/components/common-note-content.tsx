@@ -2,7 +2,7 @@
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 
-import { CommonNote } from '@/app/actions/note';
+import { CommonNote } from '@/app/actions/allnote';
 import Link from 'next/link';
 import { startTransition } from 'react';
 import { useRouter } from 'next/navigation';

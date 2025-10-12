@@ -2,7 +2,7 @@
 
 import { useActionState, useEffect, useState } from 'react';
 
-import { CommonNote } from '@/app/actions/note';
+import { CommonNote } from '@/app/actions/allnote';
 import { ManageState } from '@/app/actions/manage-state';
 import { addCommonNoteAction } from '@/app/actions/note-add-action';
 import { useRouter } from 'next/navigation';

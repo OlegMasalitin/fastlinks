@@ -1,6 +1,6 @@
 import AddConfidentialNoteForm from '@/app/notes/components/confidential-note-form';
 import BackButton from '@/app/components/back-button';
-import { ConfidentialNote } from '@/app/actions/note';
+import { ConfidentialNote } from '@/app/actions/allnote';
 import { notFound } from 'next/navigation';
 
 export default async function AddConfidentialNote() {

@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-import { ConfidentialNote } from '@/app/actions/note';
+import { ConfidentialNote } from '@/app/actions/allnote';
 import ConfidentialNoteContent from './confidential-note-content';
 import Link from 'next/link';
 import classes from './notes-container.module.css';

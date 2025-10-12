@@ -1,6 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
-import { CommonNote } from '@/app/actions/note';
+import { CommonNote } from '@/app/actions/allnote';
 import CommonNoteContent from './common-note-content';
 import Link from 'next/link';
 import classes from './notes-container.module.css';
