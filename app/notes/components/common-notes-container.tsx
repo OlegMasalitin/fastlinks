@@ -11,10 +11,7 @@ export default function CommonNotesContainer({ notes }: Readonly<{ notes: Common
       {notes.length > 0 && (
         <ol className={`${classes.threecolumns} !list-decimal`}>
           {notes.map((note) => (
-            <li
-              key={note.id}
-              className="flex flex-row justify-between items-start line-clamp-2 overflow-hidden hover:bg-gray-100 px-2 border-b border-sky-100"
-            >
+            <li key={note.id} className="line-clamp-2 overflow-hidden hover:bg-gray-100 px-2 border-b border-sky-100">
               <CommonNoteContent note={note} />
             </li>
           ))}

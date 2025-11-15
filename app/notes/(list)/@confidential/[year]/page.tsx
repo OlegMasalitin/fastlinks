@@ -19,9 +19,9 @@ export default async function ConfidentialYearNotes({ params }: Readonly<Confide
   return (
     <div className="w-full relative">
       <div className="flex flex-row justify-between absolute top-[-38px] left-[200px] right-0">
-        <span>Selected year: {year}</span>
+        <span>{year}</span>
         <Link className="" href={`/notes`}>
-          <button className="px-4 py-2 bg-gray-200 rounded">Go Back</button>
+          <button className="px-4 py-2 bg-gray-200 rounded">Back</button>
         </Link>
       </div>
       <div className="pt-3">

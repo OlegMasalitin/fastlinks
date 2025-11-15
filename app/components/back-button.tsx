@@ -7,7 +7,7 @@ export default function BackButton() {
 
   return (
     <button onClick={() => router.back()} className="px-4 py-2 bg-gray-200 rounded">
-      Go Back
+      Back
     </button>
   );
 }
