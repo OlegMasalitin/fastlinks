@@ -65,12 +65,12 @@ export default function AddCommonNoteForm({ note, isEdit }: Readonly<{ note: Com
           <label htmlFor="description" className="block text-sm">
             Description:
           </label>
-          <input
-            type="text"
+          <textarea
             id="description"
             name="description"
             defaultValue={note.description}
             className="border p-2 w-full rounded"
+            style={{ height: '100px', fontSize: '10px' }}
           />
           {errors.description && <p className="text-red-600 text-sm">{errors.description}</p>}
         </div>
