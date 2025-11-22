@@ -1,0 +1,13 @@
+{
+  "name": "Fast Links",
+  "short_name": "Links",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/assets/logo512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

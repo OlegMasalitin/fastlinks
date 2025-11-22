@@ -9,7 +9,7 @@ export default async function Header() {
   const session = await getServerSession(authOptions);
 
   return (
-    <header className="h-[64px] p-[8px] flex flex-row justify-between items-center border-b border-gray-500">
+    <header className="h-[64px] p-[8px] flex flex-row justify-between items-center border-b border-gray-500 sticky">
       <Link href="/">
         <Logo />
       </Link>

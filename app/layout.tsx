@@ -19,6 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Fast Links',
   description: 'Fast Links app allow to create a links, comments and notes',
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
