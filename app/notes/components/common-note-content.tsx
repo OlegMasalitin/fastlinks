@@ -52,7 +52,7 @@ export default function CommonNoteContent({ note }: Readonly<{ note: CommonNote 
           )}
         </div>
       </div>
-      <div className="break-all text-xs my-2 text-gray-500">{note.description}</div>
+      <div className="whitespace-pre-wrap text-xs my-2 text-gray-500">{note.description}</div>
     </>
   );
 }

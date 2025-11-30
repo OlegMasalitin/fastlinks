@@ -26,7 +26,7 @@ export default function ConfidentialNoteContent({ note }: Readonly<{ note: Confi
         <div className="break-all">
           {note.login} - {note.password}
         </div>
-        <div className="break-all text-xs">{note.description}</div>
+        <div className="whitespace-pre-wrap text-xs">{note.description}</div>
       </div>
 
       <div className="flex flex-row flex-nowrap items-center">
