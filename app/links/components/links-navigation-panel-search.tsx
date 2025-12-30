@@ -82,6 +82,8 @@ export default function LinksNavigationPanelSearch({
             <option value="Music">Music</option>
             <option value="Film">Film</option>
             <option value="Purchases">Purchases</option>
+            <option value="Html">Html</option>
+            <option value="Web">Web</option>
             <option value="D3">D3</option>
             <option value="React">React</option>
             <option value="AzureMap">AzureMap</option>
