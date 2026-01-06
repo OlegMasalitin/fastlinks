@@ -4,11 +4,11 @@ import { getCommonNotesCollection, getConfidentialNotesCollection } from './mong
 import { ObjectId } from 'mongodb';
 
 export async function getAvailableCommonYears() {
-  return [2022, 2023, 2024, 2025];
+  return [2022, 2023, 2024, 2025, 2026, 2027, 2028];
 }
 
 export async function getAvailableConfidentialYears() {
-  return [2024, 2025];
+  return [2022, 2023, 2024, 2025, 2026, 2027, 2028];
 }
 
 export async function loadYearCommonNotes(year: number, tags: string[] = []): Promise<CommonNote[]> {
