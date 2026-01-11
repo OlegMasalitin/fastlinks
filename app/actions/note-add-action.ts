@@ -27,7 +27,6 @@ export async function addCommonNoteAction(prevState: ManageState, formData: Form
   if (description == null || description.trim() === '') {
     return { success: false, error: 'Description required' };
   }
-
   const note = {
     text: text,
     description: description,
@@ -42,6 +41,12 @@ export async function addCommonNoteAction(prevState: ManageState, formData: Form
     if (noteId == null || noteId === '') {
       notesCollection.insertOne(note);
     } else {
+      const notesCollection = await getCommonNotesCollection();
+      const currNote = await notesCollection.findOne({ _id: new ObjectId(noteId) });
+
+      if (currNote) {
+        note.year = currNote.year;
+      }
       const result = await notesCollection.updateOne({ _id: new ObjectId(noteId) }, { $set: note });
 
       if (result.matchedCount === 0) {
@@ -82,6 +87,7 @@ export async function addConfidentialNoteAction(prevState: ManageState, formData
     return { success: false, error: 'Description required' };
   }
 
+  const isNew = noteId == null || noteId === '';
   const note = {
     login: login,
     password: password,
@@ -94,7 +100,7 @@ export async function addConfidentialNoteAction(prevState: ManageState, formData
   try {
     const notesCollection = await getConfidentialNotesCollection();
 
-    if (noteId == null || noteId === '') {
+    if (isNew) {
       notesCollection.insertOne(note);
     } else {
       const result = await notesCollection.updateOne({ _id: new ObjectId(noteId) }, { $set: note });
