@@ -89,6 +89,7 @@ export default function AddCommonNoteForm({ note, isEdit }: Readonly<{ note: Com
             <option value="Css">Css</option>
             <option value="Scss">Scss</option>
             <option value="RxJs">RxJs</option>
+            <option value="NestJs">NestJs</option>
             <option value="Music">Music</option>
             <option value="Film">Film</option>
             <option value="Purchases">Purchases</option>
